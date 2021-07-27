@@ -1,8 +1,7 @@
+// 클래스형 컴포넌트는 이렇게 생겼습니다!
 import React from "react";
 import logo from "./logo.svg";
 import styled from "styled-components";
-
-// 클래스형 컴포넌트는 이렇게 생겼습니다!
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -20,7 +19,7 @@ class App extends React.Component {
 }
 export default App;
 
-
+// 함수형 컴포넌트는 이렇게 생겼습니다!
 import React from "react";
 import styled from "styled-components";
 //함수컴포넌트의 이름은 항상 앞 대문자 << *****
