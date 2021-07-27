@@ -1,0 +1,62 @@
+DOM은 트리구조다.  ->> 부모안에 자식이 있다.
+
+DOM의 크기가 커질수록 root에서부터 계속 찾아가서 모든DOM을 찾아가면서 탐색한다.
+즉 자식노드에서 700번째줄을 수정을 할 경우
+부모의 root부터 700번째까지 찾아 들어간다음 수정을 걸친다. 또한
+자식노드가 수정이 되었으니 부모노드 또한 업데이트가 이루어져야한다.
+번거롭다!!
+
+그래서 등장한 가상DOM****
+
+기존의 가지고 있던 DOM(A)이있고 똑같은 DOM(B)을 하나더 생성
+즉 현재는 A와B DOM은 같은것이다.
+만약 내가 간단한 if(usernumber !== null)을 600번째줄에 추가하고싶다. 하면
+가상DOM인 B에 이것을 600번째에 삽입시킨다음 
+B를 기존의DOM인 A에 엎어버린다. 
+이러면 간단하게 수정(업데이트)을 할수있다.
+
+react 랜더링
+렌더링 : 화면에 view를 보여주는 것
+초기 렌더링 : 어떤 UI,라이브러리등 사용하든 간에 맨 처음 화면에 view를 보여주는 것
+render 특징
+1. component를 정의
+2. render 함수는 html형식의 문자열을 반환하지않고 view의 생김새와 동작에 대한 정보를 지닌
+객체를 반환한다.
+3. render가 감싸고있는 내부 component들도 재귀적으로 렌더링한다.
+
+리엑트 render 동작 순서
+App -> 부모 -> 자식
+리엑트 mount 순서
+자식 -> 부모 -> App
+
+react 리렌더링
+리렌더링 : 간단하게 view 업데이트
+
+리렌더링 되는 경우
+1. 자신의 상태가 변경,수정될때
+2. 부모 component가 리렌더링 될때
+3. 전달받은 props가 바뀔때
+4. 강제업데이트가 실행될때  ->  forceUpdate();
+
+
+life-cycle이란 ?
+life-cycle 정의 : component의 생명주기
+component가 렌더링을 준비하는 순간부터 page가 없어질때까지(제거될때)
+
+componentDid-Mount();
+componentDidUpdate();
+componentWill-Unmount();
+
+
+life-cycle 작동 순서
+앞서 life-cycle은 class형 component에서만 작동됩니다.
+하지만 리엑트 16.8버전부터 React Hooks라는 라이프사이클 함수를 대체할수있다.
+
+생성자함수(constructor) -> render -> componentDidMount(); -> componentDidUpdate();
+componentDidMount();함수는 render가 완료된 순간에 불러옴 (초기 렌더링 이후 딱한번 불려옴 리렌더링에선 XXX)
+
+componentDidUpdate(prevProps, prevState);함수는 초기렌더링이후 리렌더링할때부터 즉 수정이 이루어지면 불러옴
+DidUpdate는 바뀐 props,state말고도 바뀌어지기 이전의 props,state도 확인 비교가 가능하다.
+
+componentWill-Unmount();
+component가 DOM에서 제거될때 나오는 함수
