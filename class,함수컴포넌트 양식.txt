@@ -1,0 +1,32 @@
+import React from "react";
+import logo from "./logo.svg";
+import styled from "styled-components";
+
+// 클래스형 컴포넌트는 이렇게 생겼습니다!
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+    };
+  }
+
+  // 랜더 함수 안에 리액트 엘리먼트를 넣어줍니다!
+  render() {
+    return (
+      <div className="App">
+      </div>
+    );
+  }
+}
+export default App;
+
+
+import React from "react";
+import styled from "styled-components";
+//함수컴포넌트의 이름은 항상 앞 대문자 << *****
+const Bu= (props) => {
+  // state를 props로 받기
+  return null;
+};
+
+export default Bu;
