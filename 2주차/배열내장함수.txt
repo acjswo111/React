@@ -21,4 +21,6 @@ const filter = array.filter((item,index) =>{
 });
 console.log(filter);
 
-from ex) 새로운 배열을 만들때
+from ex) 어떤 숫자의 길이만큼 크기를 가진 배열로반환해주는 배열내장함수
+
+const nemo_count = Array.from({length: this.state.count},(key,index)=>(index));
