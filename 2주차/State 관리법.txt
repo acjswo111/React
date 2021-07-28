@@ -1,0 +1,41 @@
+state와 props의 차이
+props는 매개변수처럼 컴포넌트에 전달되는 반면에
+state는 지역변수처럼 컴포넌트 안에서만 관리된다.
+우리가 자바스크립트에서 var let const를 쓰는것과 비슷하다라고 생각하자.
+State 관리란?
+State를 생성하고 업데이트하고 삭제하는 것 -> 즉 컴포넌트의 데이터 관리
+즉 state가 변경되면 리렌더링된다.
+
+state는 단방향 데이터 관리
+즉 부모에서 자식으로 넘겨준다.   자식에서 부모로 넘기면 무한루프에 빠질것이다.
+
+class형 컴포넌트에서 state 관리법   setState(); 중요 ***
+setState();
+
+this.setState({수정할값})
+예시
+addNemo = () =>{
+    this.setState({count: this.state.count+1});
+  };
+  removeNemo =()=>{ 
+    this.setState({count: this.state.count-1});
+
+   이런식으로 삼항연산자 사용하여 메모장관리하기
+this.state.count <= 1 ? alert("삭제불가") :this.setState({count: this.state.count-1});
+  };
+스프레드 문법으로 배열추가하기.
+this.setState({bukitlists: [...list, new_item]});
+
+함수형 컴포넌트에서의 state 관리법
+월레 state는 함수형컴포넌트에서 관리할수가없지만 react hooks를 사용하여 함수형에서도 가능
+const [count, setCount] = React.useState(3);
+useState();를 사용할땐 상태의 기본값을 파라미터로 넣어서 호출한다.
+여기서 첫번째파라미터는 현재의상태, 두번째는 함수를 의미한다.
+setCount라는함수는 setState와 같은역할을 해주는애
+즉 어떠한 함수에
+const a = () =>{
+  setCount(count+1);
+}를 해버리면 기존의 count가 useState(3)에 의해 초깃값인 3이 들어간상태에서
+setCount라는 함수에 count+1를함으로 현재상태를 최신화 시켜준다. 즉 리렌더링후엔 4라는값으로
+최신화가되어 count의 최신화가 이루어진다.
+<Butn onClick={a}>추가</Butn>
