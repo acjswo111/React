@@ -1,0 +1,24 @@
+react에선 map함수를 사용할때 key값을 부여해주는것이 좋다.(warnning메시지뜸)
+
+map | filter | concat | from
+
+map ex) 원본그대로를 두고 새로운 배열을 만든다.
+const arr =['스파르타',"클럽","리액트"];
+const maparr = arr.map((num,index)=>{
+	return num.length;
+});
+console.log(maparr);
+
+concat ex)  기존 배열에 새로운 배열을 추가하여 새 배열을 만든다.
+const cona =['스파르타',"클럽","리액트"];
+const conb =['자바',"자바스크립트","c언어"];
+const conc =cona.concat(conb);
+console.log(conc);
+
+filter ex) 조건을 만족하는 항목들만 골라서 새배열을 만든다.
+const filter = array.filter((item,index) =>{
+  return item % 2 === 0;
+});
+console.log(filter);
+
+from ex) 새로운 배열을 만들때
