@@ -1,0 +1,26 @@
+Event Listener
+주의 ** 
+컴포넌트는 생성되고 업데이트되고 사라지고 한다. 사라질떄 eventlistener가 따로놀지않도록
+componentwillunmount로 eventlistener를 해제시켜줘야 한다.
+
+
+
+event Listener 사용 절차   (값은 current로 가져온다.)
+1. React.createRef() 생성
+this.div = React.createRef();
+2. React.createRef() 지정
+<div className="App" ref={this.div}>
+3. Event Listener를 해줄 함수만들기
+hoverEvent = (e) =>{
+    console.log(e); //이벤트 객체
+    console.log(e.target); // div잘잡아옴 즉 꾸며줄땐 target설정을한다.
+    e.target.style.backgroundColor = "blue"; << 이런식으로
+  }
+4. Event Listener를 등록한다. 그러기에 componentDidMount에 등록한다.
+componentDidMount(){
+    this.div.current.addEventListener("mouseover",this.hoverEvent);
+  }
+5. componentWillUnmount()로 해제시켜준다.      컴포넌트가 사라질때 쓰레기가 남지않기위해 쓰임
+componentWillUnmount(){
+    this.div.current.removeEventListener("mouseover",this.hoverEvent);
+  }
